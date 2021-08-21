@@ -1,13 +1,47 @@
-RegisterServerEvent('qb-taxes')
-AddEventHandler('qb-taxes', function(amount)
+local poor = 10000
+local notbad = 100000 -- mininum bank value to be taxed in this bracket
+local medium = 300000 -- mininum bank value to be taxed in this bracket
+local rich = 700000 -- mininum bank value to be taxed in this bracket
+local toorich = 1000000 -- mininum bank value to be taxed in this bracket
+local percentage = {}
+--     flyinperc = 0,
+--     poorperc = 1,
+--     notbadperc = 2,
+--     mediumperc = 4,
+--     richperc = 6,
+--     toorichperc = 8,
+
+
+RegisterServerEvent("qb-taxing:server:Display")
+AddEventHandler("qb-taxing:server:Display", function()
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+    local bankamount = Player.PlayerData.money['bank']
+    local bracket = flyin
+    if bankamount > poor and bankamount <= notbad then
+        bracket = poor
+        percentage = "1%"
+    elseif bankamount > notbad and bankamount <= medium then
+        bracket = notbad
+        percentage = "2%"
+    elseif bankamount > medium and bankamount <= rich then
+        bracket = medium
+        percentage = "4%"
+    elseif bankamount > rich and bankamount <= toorich then
+        bracket = rich
+        percentage = "6%"
+    elseif bankamount > toorich then
+        bracket = toorich
+        percentage = "8%"
+    end
+    TriggerClientEvent("QBCore:Notify", src, "Your Current Tax Bracket is " ..bracket.. " Tax Percentage is " ..percentage.. "!")
+end)
+
+RegisterServerEvent('qb-taxing:server:paytaxes')
+AddEventHandler('qb-taxing:server:paytaxes', function(amount)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local bankamount = Player.PlayerData.money.bank
-    local poor = 10000
-    local notbad = 100000 -- mininum bank value to be taxed in this bracket
-    local medium = 300000 -- mininum bank value to be taxed in this bracket
-    local rich = 700000 -- mininum bank value to be taxed in this bracket
-    local toorich = 1000000 -- mininum bank value to be taxed in this bracket
     local tax = (bankamount / 100 * 1) -- change for percentage/tax bracket
     local tax1 = (bankamount / 100 * 2) -- change for percentage/tax bracket
     local tax2 = (bankamount / 100 * 4) -- change for percentage/tax bracket
