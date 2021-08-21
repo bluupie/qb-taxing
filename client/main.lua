@@ -4,7 +4,7 @@ TriggerEvent('QBCore:getObject', function(obj) QBCore = obj end)
 
 Citizen.CreateThread(function()
 	while true do
-		Wait(4*675000) -- change time of payment
+		Wait(4*675000) -- change time of payment // current time = 45 minutes
 		TriggerServerEvent('qb-taxes')
 	end
 end)
