@@ -1,4 +1,4 @@
-QBCore = nil
+local QBCore = exports['qb-core']:GetCoreObject()
 
 TriggerEvent('QBCore:getObject', function(obj) QBCore = obj end)
 

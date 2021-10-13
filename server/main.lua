@@ -1,3 +1,4 @@
+local QBCore = exports['qb-core']:GetCoreObject()
 local flyin = 5000 -- minimum bank value to be taxed in this bracket
 local poor = 10000 -- minimum bank value to be taxed in this bracket
 local notbad = 100000 -- mininum bank value to be taxed in this bracket
