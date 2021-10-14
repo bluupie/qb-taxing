@@ -31,13 +31,13 @@ AddEventHandler("qb-taxing:server:Display", function()
         percentage = "2%"
     elseif bankamount > medium and bankamount <= rich then
         bracket = medium
-        percentage = "4%"
+        percentage = "3%"
     elseif bankamount > rich and bankamount <= toorich then
         bracket = rich
-        percentage = "6%"
+        percentage = "4%"
     elseif bankamount > toorich then
         bracket = toorich
-        percentage = "8%"
+        percentage = "5%"
     end
     TriggerClientEvent("QBCore:Notify", src, "Your Current Tax Bracket is $" ..bracket.. " Tax Percentage is " ..percentage.. "!")
 end)
@@ -49,9 +49,9 @@ AddEventHandler('qb-taxing:server:paytaxes', function(amount)
     local bankamount = Player.PlayerData.money.bank
     local tax = (bankamount / 100 * 1) -- change for percentage/tax bracket
     local tax1 = (bankamount / 100 * 2) -- change for percentage/tax bracket
-    local tax2 = (bankamount / 100 * 4) -- change for percentage/tax bracket
-    local tax3 = (bankamount / 100 * 6) -- change for percentage/tax bracket
-    local tax4 = (bankamount / 100 * 8) -- change for percentage/tax bracket
+    local tax2 = (bankamount / 100 * 3) -- change for percentage/tax bracket
+    local tax3 = (bankamount / 100 * 4) -- change for percentage/tax bracket
+    local tax4 = (bankamount / 100 * 5) -- change for percentage/tax bracket
     
     if bankamount <= poor then
       TriggerClientEvent('QBCore:Notify', source, "You do not have enough money to be taxed" , "error")
