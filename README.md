@@ -11,3 +11,5 @@ Thanks to ReallyPluto and Kyle For helping me get this working <3
 
 * Added the ability to have all the money collected deposited into a Boss Account!
     - To Change Job that gets payment just replace every "government" in the server.lua to your desired job.
+
+* Updated to work with the latest QBCore
